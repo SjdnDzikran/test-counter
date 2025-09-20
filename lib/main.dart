@@ -33,7 +33,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      _counter+= 2;
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      _counter-= 2;
     });
   }
 
@@ -56,10 +62,23 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            tooltip: 'Decrement by 2',
+            heroTag: 'decrementButton', // Add a unique heroTag
+            child: const Icon(Icons.remove),
+          ),
+          const SizedBox(height: 10), // Add some spacing between buttons
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            heroTag: 'incrementButton', // Add a unique heroTag
+            child: const Icon(Icons.add),
+          ),
+        ],
       ),
     );
   }
