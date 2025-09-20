@@ -1,0 +1,5 @@
+package com.test.counter
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
