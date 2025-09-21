@@ -30,10 +30,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  int _counter2 = 0;
 
   void _incrementCounter() {
     setState(() {
       _counter++;
+      _counter2 += 2;
     });
   }
 
@@ -57,6 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text('You have pushed the button this many times:'),
             Text(
               '$_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+            Text(
+              '$_counter2',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ],
