@@ -46,6 +46,15 @@ jobs:
           echo "full_build_number=$FULL_BUILD_NUMBER" >> $GITHUB_OUTPUT
           echo "full_version=$FULL_VERSION" >> $GITHUB_OUTPUT
 
+      # Decode Keystore and Create Properties
+      - name: Decode Keystore and Create Properties
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/upload-keystore.jks
+          echo "storeFile=upload-keystore.jks" > android/key.properties
+          echo "storePassword=${{ secrets.STORE_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+
       # Accepts Android SDK licenses.
       - name: Accept Android SDK licenses
 
